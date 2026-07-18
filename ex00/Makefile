@@ -1,0 +1,29 @@
+CPP = c++
+CFLAGS = -Wall -Wextra -Werror -g -std=c++98
+SRC_DIR = src
+OBJ_DIR = obj
+INCLUDE = -Iinclude
+
+SRCS = ${SRC_DIR}/main.cpp ${SRC_DIR}/Zombie.cpp ${SRC_DIR}/newZombie.cpp \
+		${SRC_DIR}/randomChump.cpp
+
+OBJS = $(SRCS:${SRC_DIR}/%.cpp=${OBJ_DIR}/%.o)
+
+NAME = Brainz
+
+all: ${NAME}
+
+$(NAME): ${OBJS}
+	$(CPP) ${CFLAGS} ${OBJS} -o ${NAME}
+
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.cpp
+	mkdir -p $(dir $@)
+	$(CPP) $(CFLAGS) ${INCLUDE} -c $< -o $@
+
+clean:
+	rm -rf ${OBJ_DIR}
+
+fclean: clean
+	rm -rf ${NAME}
+
+re: fclean all
