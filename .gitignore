@@ -4,3 +4,5 @@ ex00/Brainz
 ex01/ZombieHorde
 ex02/stringRef
 ex03/Human
+ex04/replaceFile
+ex04/*.replace
